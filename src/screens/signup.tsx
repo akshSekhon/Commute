@@ -1,26 +1,25 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors } from '../constants/common';
-import CustomTextInput from '../components/CustomTextInput';
-import CustomButton from '../components/CustomButton';
 import SvgAuthLogo from '../assets/images/auth_logo.svg';
 import LeftArrow from '../assets/images/left_arrow.svg';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/StackNavigator';
-import i18n from '../constants/localization/localization';
+import CustomButton from '../components/CustomButton';
+import CustomTextInput from '../components/CustomTextInput';
+import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
+import i18n from '../constants/localization/localization';
+import { goBack, pushTo } from '../navigation/NavigationService';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Signup'>;
 
-function Signup({navigation}:Props): React.JSX.Element {
+
+function Signup() {
     return (
         <LinearGradient
             colors={[Colors.gradientStart, Colors.gradientEnd]}
             style={styles.container}
         >
             <SafeAreaView style={{ position: 'absolute', top: 20, left: 20, zIndex: 1 }}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
                     <LeftArrow width={40} height={40} />
                 </TouchableOpacity>
             </SafeAreaView>
@@ -42,7 +41,8 @@ function Signup({navigation}:Props): React.JSX.Element {
                             title={i18n.t('next')}
                             onPress={() => {
                                 console.log('Next pressed');
-                                navigation.navigate('OtpVerification'); // Navigate to the OtpVerification screen
+                                pushTo('OtpVerification')
+                                // navigation.navigate('OtpVerification'); // Navigate to the OtpVerification screen
                             }}
                             style={{ marginTop: 20, backgroundColor: Colors.blue0A1C26 }}
                             textStyle={{ fontSize: 18, fontWeight: '600' }}

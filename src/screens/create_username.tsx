@@ -1,23 +1,20 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors } from '../constants/common';
-import CustomTextInput from '../components/CustomTextInput';
-import CustomButton from '../components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/StackNavigator';
 import SvgAuthLogo from '../assets/images/auth_logo.svg';
 import LeftArrow from '../assets/images/left_arrow.svg';
-import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
+import CustomButton from '../components/CustomButton';
+import CustomTextInput from '../components/CustomTextInput';
+import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
+import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
+import { goBack } from '../navigation/NavigationService';
 
 // Ensure this path is correct
 
 // Replace 'Login' with the actual screen name for this component as defined in your RootStackParamList
-type Props = NativeStackScreenProps<RootStackParamList, 'CreateUsername'>;
 
-function CreateUsername({ navigation }: Props): React.JSX.Element {
+function CreateUsername() {
 
     return (
         <LinearGradient
@@ -25,7 +22,7 @@ function CreateUsername({ navigation }: Props): React.JSX.Element {
             style={styles.container}
         >
             <SafeAreaView style={{ position: 'absolute', top: 20, left: 20, zIndex: 1 }}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
                     <LeftArrow width={40} height={40} />
                 </TouchableOpacity>
             </SafeAreaView>

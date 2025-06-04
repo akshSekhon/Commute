@@ -1,27 +1,24 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors } from '../constants/common';
-import CustomTextInput from '../components/CustomTextInput';
-import CustomButton from '../components/CustomButton';
+import { OtpInput } from "react-native-otp-entry";
 import SvgAuthLogo from '../assets/images/auth_logo.svg';
 import LeftArrow from '../assets/images/left_arrow.svg';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/StackNavigator';
-import { OtpInput } from "react-native-otp-entry";
-import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
+import CustomButton from '../components/CustomButton';
+import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
+import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
+import { goBack, pushTo } from '../navigation/NavigationService';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'OtpVerification'>;
 
-function OtpVerification({ navigation }: Props): React.JSX.Element {
+function OtpVerification() {
     return (
         <LinearGradient
             colors={[Colors.gradientStart, Colors.gradientEnd]}
             style={styles.container}
         >
             <SafeAreaView style={{ position: 'absolute', top: 20, left: 20, zIndex: 1 }}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity onPress={() => goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
                     <LeftArrow width={40} height={40} />
                 </TouchableOpacity>
             </SafeAreaView>
@@ -69,7 +66,8 @@ function OtpVerification({ navigation }: Props): React.JSX.Element {
                             title={i18n.t(TRANSLATION_KEYS.next)}
                             onPress={() => {
                                 console.log('Next pressed');
-                                navigation.navigate('CreatePassword');
+                                // navigation.navigate('CreatePassword');
+                                pushTo('CreatePassword')
                             }}
                             style={{ marginTop: 20, backgroundColor: Colors.blue0A1C26 }}
                             textStyle={{ fontSize: 18, fontWeight: '600' }}

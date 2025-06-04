@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     padding: 12,
     marginHorizontal: 16,
- 
+
   },
   tripHeader: {
     flexDirection: 'row',

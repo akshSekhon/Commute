@@ -8,20 +8,13 @@ import CreateUsername from '../screens/create_username';
 import MainTabs from '../screens/tabs/MainTabs';
 import AddVehicleScreen from '../screens/addvehicle';
 import VehicleRegisterConfirmation from '../screens/VehicleRegisterConfirmation';
+import { RouteParamList, RouteStackParams } from './routes.type';
 
-export type RootStackParamList = {
-  MainTabs: undefined;
-  Login: undefined;
-  Signup: undefined;
-  OtpVerification: undefined;
-  CreatePassword: undefined;
-  CreateUsername: undefined;
-  AddVehicleScreen: undefined;
-  VehicleRegisterConfirmation: undefined; // Assuming this is a screen you might have
+// export type RootStackParamList = {
 
-};
+// };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RouteParamList>();
 
 const AppNavigator = () => (
   <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
@@ -31,8 +24,8 @@ const AppNavigator = () => (
     <Stack.Screen name="OtpVerification" component={OtpVerification} />
     <Stack.Screen name="CreatePassword" component={CreatePassword} />
     <Stack.Screen name="CreateUsername" component={CreateUsername} />
-    <Stack.Screen name="AddVehicleScreen" component={AddVehicleScreen} /> 
-    <Stack.Screen name="VehicleRegisterConfirmation" component={VehicleRegisterConfirmation} /> 
+    <Stack.Screen name="AddVehicleScreen" component={AddVehicleScreen} />
+    <Stack.Screen name="VehicleRegisterConfirmation" component={VehicleRegisterConfirmation} />
   </Stack.Navigator>
 );
 

@@ -1,15 +1,13 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Colors } from '../constants/common';
-import CustomTextInput from '../components/CustomTextInput';
-import CustomButton from '../components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/StackNavigator';
 import SvgAuthLogo from '../assets/images/auth_logo.svg';
-import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
+import CustomButton from '../components/CustomButton';
+import CustomTextInput from '../components/CustomTextInput';
+import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
+import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
+import { navigateAndReset, pushTo } from '../navigation/NavigationService';
 
 // Helper function for translation
 const t = (key: keyof typeof TRANSLATION_KEYS) => i18n.translate(TRANSLATION_KEYS[key]);
@@ -17,9 +15,9 @@ const t = (key: keyof typeof TRANSLATION_KEYS) => i18n.translate(TRANSLATION_KEY
 // Ensure this path is correct
 
 // Replace 'Login' with the actual screen name for this component as defined in your RootStackParamList
-type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+// type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
-function Login({ navigation }: Props): React.JSX.Element {
+function Login() {
 
     return (
         <LinearGradient
@@ -48,7 +46,8 @@ function Login({ navigation }: Props): React.JSX.Element {
                         <View style={{ paddingTop: 50 }} />
                         <CustomButton
                             title={i18n.t(TRANSLATION_KEYS.login)}
-                            onPress={() => navigation.replace('MainTabs')}
+                            // onPress={() => navigation.replace('MainTabs')}
+                            onPress={() => navigateAndReset('MainTabs')}
                             style={{ marginTop: 20, backgroundColor: Colors.blue0A1C26 }}
                             textStyle={{ fontSize: 18, fontWeight: '600' }}
                         />
@@ -63,7 +62,7 @@ function Login({ navigation }: Props): React.JSX.Element {
                 <Text
                     style={styles.registerLink}
                     onPress={() => {
-                        navigation.navigate('Signup');
+                        pushTo('Signup')
                     }}
                 >
                     {i18n.t(TRANSLATION_KEYS.registration)}

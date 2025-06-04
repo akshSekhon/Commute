@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 
+import DropDownPicker from 'react-native-dropdown-picker';
+import LeftArrow from '../assets/images/left_arrow.svg';
+import CustomButton from '../components/CustomButton';
+import CustomTextInput from '../components/CustomTextInput';
 import Colors from '../constants/colors';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
 import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
-import CustomTextInput from '../components/CustomTextInput';
-import CustomButton from '../components/CustomButton';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/StackNavigator';
-import LeftArrow from '../assets/images/left_arrow.svg';
-import DropDownPicker from 'react-native-dropdown-picker';
-import VehicleRegisterConfirmation from './VehicleRegisterConfirmation';
-type Props = NativeStackScreenProps<RootStackParamList, 'AddVehicleScreen'>;
-const AddVehicleScreen = ({ navigation }: Props) => {
+import { goBack, pushTo } from '../navigation/NavigationService';
+
+const AddVehicleScreen = () => {
   // State for form fields (optional, for controlled inputs)
 
 
@@ -61,7 +59,7 @@ const AddVehicleScreen = ({ navigation }: Props) => {
   return (
     <LinearGradient colors={[Colors.gradientStart, Colors.gradientEnd]} style={styles.container}>
       <SafeAreaView style={{ position: 'absolute', top: 20, left: 20, zIndex: 1 }}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity onPress={() => goBack()} style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center' }}>
           <LeftArrow width={40} height={40} />
         </TouchableOpacity>
       </SafeAreaView>
@@ -145,8 +143,9 @@ const AddVehicleScreen = ({ navigation }: Props) => {
             </View>
             <CustomButton
               title={i18n.t(TRANSLATION_KEYS.next)}
-              onPress={() => { 
-                navigation.navigate('VehicleRegisterConfirmation');
+              onPress={() => {
+                // navigation.navigate('VehicleRegisterConfirmation');
+                pushTo('VehicleRegisterConfirmation')
               }}
               style={styles.button}
               textStyle={styles.buttonText}
