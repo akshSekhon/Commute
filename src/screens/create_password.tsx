@@ -9,6 +9,7 @@ import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
 import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
 import { goBack, pushTo } from '../navigation/NavigationService';
+import { moderateScale } from 'react-native-size-matters';
 
 function CreatePassword() {
     return (
@@ -48,7 +49,7 @@ function CreatePassword() {
                                 pushTo('CreateUsername'); // Navigate to the CreateUsername screen
                             }}
                             style={{ marginTop: 20, backgroundColor: Colors.blue0A1C26 }}
-                            textStyle={{ fontSize: 18, fontWeight: '600' }}
+                            textStyle={{ fontSize: moderateScale(16), fontWeight: '700' }}
                         />
 
                     </View>
@@ -70,14 +71,15 @@ const styles = StyleSheet.create({
         minHeight: '100%',
     },
     title: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: moderateScale(24),
+        fontWeight: '400',
         textAlign: 'center',
         paddingHorizontal: 40,
         fontFamily: FONT_FAMILY_GOTHIC_A1,
     },
     subtitle: {
-        fontSize: 14,
+        fontSize: moderateScale(12),
+        fontWeight: '400',
         color: '#666',
         textAlign: 'center',
         paddingBottom: 20,

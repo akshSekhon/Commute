@@ -12,6 +12,7 @@ import ProfileSelected from '../assets/images/tab/tab_profile_selected.svg';
 import ProfileUnselected from '../assets/images/tab/tab_profile_unselected.svg';
 import MenuSelected from '../assets/images/tab/tab_menu_selected.svg';
 import MenuUnselected from '../assets/images/tab/tab_menu_unselected.svg';
+import { moderateScale } from 'react-native-size-matters';
 
 const TAB_ICONS = [
   {
@@ -89,14 +90,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tabLabel: {
-    fontSize: 13,
+    fontSize: moderateScale(16),
     color: '#222',
     marginTop: 2,
     fontWeight: '400',
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
   selectedLabel: {
-    fontWeight: 'bold',
+    fontWeight: '700',
+     fontSize: moderateScale(16),
   },
 });
 

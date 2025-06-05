@@ -9,6 +9,7 @@ import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
 import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
 import { goBack, pushTo } from '../navigation/NavigationService';
+import { moderateScale } from 'react-native-size-matters';
 
 
 function OtpVerification() {
@@ -33,33 +34,21 @@ function OtpVerification() {
                         <OtpInput numberOfDigits={5} onTextChange={(text) => console.log(text)} theme={{
                             pinCodeTextStyle: {
                                 borderRadius: 12,
-                                backgroundColor: '#fff',
-                                shadowColor: '#000',
-                                shadowOffset: { width: 0, height: 4 },
-                                shadowOpacity: 0.10,
-                                shadowRadius: 8,
-                                elevation: 4,
+                                backgroundColor: 'transparent',
+                                
                             },
                             focusedPinCodeContainerStyle: {
                                 borderRadius: 12,
                                 backgroundColor: '#fff',
                                 borderColor: Colors.blue0A1C26,
-                                shadowColor: '#000',
-                                shadowOffset: { width: 0, height: 4 },
-                                shadowOpacity: 0.10,
-                                shadowRadius: 8,
-                                elevation: 4,
+                               
                             },
                             pinCodeContainerStyle: {
                                 borderRadius: 12,
                                 backgroundColor: '#fff',
                                 height: 48,
                                 width: 48,
-                                shadowColor: '#000',
-                                shadowOffset: { width: 0, height: 4 },
-                                shadowOpacity: 0.10,
-                                shadowRadius: 8,
-                                elevation: 4,
+                              
                             },
                         }} />
                         <CustomButton
@@ -70,7 +59,7 @@ function OtpVerification() {
                                 pushTo('CreatePassword')
                             }}
                             style={{ marginTop: 20, backgroundColor: Colors.blue0A1C26 }}
-                            textStyle={{ fontSize: 18, fontWeight: '600' }}
+                            textStyle={{ fontSize: moderateScale(16), fontWeight: '700' }}
                         />
                         <View style={{ paddingTop: 20 }} />
                         <Text style={styles.resentCode}>{i18n.t(TRANSLATION_KEYS.resend_code)}</Text>
@@ -97,7 +86,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     subtitle: {
-        fontSize: 14,
+        fontSize: moderateScale(12),
+        fontWeight: '400',
         color: '#666',
         textAlign: 'center',
         paddingBottom: 20,
@@ -105,7 +95,8 @@ const styles = StyleSheet.create({
         fontFamily: FONT_FAMILY_GOTHIC_A1,
     },
     resentCode: {
-        fontSize: 12,
+        fontSize: moderateScale(12),
+        fontWeight: '400',
         color: Colors.blue0A1C26,
         textDecorationLine: 'underline',
     }

@@ -11,6 +11,7 @@ import Colors from '../constants/colors';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
 import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
 import { goBack, pushTo } from '../navigation/NavigationService';
+import { moderateScale } from 'react-native-size-matters';
 
 const AddVehicleScreen = () => {
   // State for form fields (optional, for controlled inputs)
@@ -72,7 +73,9 @@ const AddVehicleScreen = () => {
               <Text style={styles.label}>{i18n.t(TRANSLATION_KEYS.vehicle_brand)}</Text>
               <View style={{ zIndex: openBrand ? 2000 : 1000, elevation: openBrand ? 10 : 1 }}>
                 <DropDownPicker
-                  style={styles.input}
+                  style={styles.dropDownContainer}
+                  textStyle={styles.droDownInput}
+                  placeholderStyle={{ color: Colors.textSecondary }}
                   placeholder={i18n.t(TRANSLATION_KEYS.select_brand)}
                   open={openBrand}
                   value={brand}
@@ -90,7 +93,9 @@ const AddVehicleScreen = () => {
               <Text style={styles.label}>{i18n.t(TRANSLATION_KEYS.vehicle_model)}</Text>
               <View style={{ zIndex: openModel ? 2000 : 1000, elevation: openModel ? 10 : 1 }}>
                 <DropDownPicker
-                  style={styles.input}
+                  style={styles.dropDownContainer}
+                  placeholderStyle={{ color: Colors.textSecondary }}
+                  textStyle={styles.droDownInput}
                   placeholder={i18n.t(TRANSLATION_KEYS.select_brand)}
                   open={openModel}
                   value={model}
@@ -122,7 +127,9 @@ const AddVehicleScreen = () => {
               <Text style={styles.label}>{i18n.t(TRANSLATION_KEYS.vehicle_tag)}</Text>
               <View style={{ zIndex: openTag ? 2000 : 1000, elevation: openTag ? 10 : 1 }}>
                 <DropDownPicker
-                  style={styles.input}
+                  style={styles.dropDownContainer}
+                  textStyle={styles.droDownInput}
+                  placeholderStyle={{ color: Colors.textSecondary }}
                   placeholder={i18n.t(TRANSLATION_KEYS.select_tag)}
                   open={openTag}
                   value={tag}
@@ -181,33 +188,45 @@ const styles = StyleSheet.create({
   card: {
     alignSelf: 'center',
     paddingHorizontal: 30,
+    paddingTop: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: moderateScale(24),
     fontWeight: '700',
-    color: Colors.textPrimary,
+    color: Colors.blue0A1C26,
     fontFamily: FONT_FAMILY_GOTHIC_A1,
     marginTop: 40,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 13,
-    color: Colors.textSecondary,
+    fontSize: moderateScale(14),
+    fontWeight: '400',
+    color: Colors.blue0A1C26,
     fontFamily: FONT_FAMILY_GOTHIC_A1,
     marginTop: 24,
     marginBottom: 18,
-    textAlign: 'left',
+    textAlign: 'center',
   },
   formGroup: {
     marginBottom: 18,
 
   },
   label: {
-    fontSize: 13,
+    fontSize: moderateScale(12),
+    fontWeight: '600',
     color: Colors.textSecondary,
     fontFamily: FONT_FAMILY_GOTHIC_A1,
     marginBottom: 4,
     marginTop: 10,
+  },
+  dropDownContainer: {
+    borderColor: Colors.gradientEnd,
+  },
+  droDownInput: {
+    fontSize: moderateScale(16),
+    fontWeight: '400',
+    fontFamily: FONT_FAMILY_GOTHIC_A1,
+    paddingHorizontal: 5,
   },
   input: {
     marginBottom: 4,
@@ -215,26 +234,21 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 10,
     paddingHorizontal: 16,
-    fontSize: 16,
-    borderColor: Colors.gradientEnd,
-    fontFamily: FONT_FAMILY_GOTHIC_A1,
-    color: Colors.blue0A1C26,
-  },
-  dropDownPlaceholder: {
-    color: '#999',
-    fontSize: 16,
+    fontSize: moderateScale(16),
+    fontWeight: '400',
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
+
   button: {
-    backgroundColor: '#495057',
+    backgroundColor: 'rgba(10,28,38,0.7)', // Replace with the correct RGBA value for blue0A1C26
     borderRadius: 24,
     marginTop: 10,
     marginBottom: 8,
     paddingVertical: 12,
   },
   buttonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: moderateScale(16),
+    fontWeight: '400',
     color: Colors.white,
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
@@ -243,8 +257,9 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   laterText: {
-    color: Colors.textSecondary,
-    fontSize: 14,
+    color: Colors.blue0A1C26,
+    fontSize: moderateScale(14),
+    fontWeight: '700',
     textDecorationLine: 'underline',
     fontFamily: FONT_FAMILY_GOTHIC_A1,
     marginBottom: 20,

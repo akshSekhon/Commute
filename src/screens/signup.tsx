@@ -9,6 +9,7 @@ import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
 import i18n from '../constants/localization/localization';
 import { goBack, pushTo } from '../navigation/NavigationService';
+import { moderateScale } from 'react-native-size-matters';
 
 
 
@@ -52,7 +53,7 @@ function Signup() {
                             title={i18n.t('register_with_phone')}
                             onPress={() => console.log('Login pressed')}
                             style={{ borderColor: Colors.blue0A1C26, backgroundColor: 'transparent', borderWidth: 1 }}
-                            textStyle={{ fontSize: 16, fontWeight: '600', color: Colors.blue0A1C26 }}
+                            textStyle={{ fontSize: moderateScale(16), fontWeight: '700', color: Colors.blue0A1C26 }}
                         />
 
                     </View>
@@ -76,13 +77,14 @@ const styles = StyleSheet.create({
         minHeight: '100%',
     },
     title: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: moderateScale(24),
+        fontWeight: '400',
         textAlign: 'center',
         fontFamily: FONT_FAMILY_GOTHIC_A1,
     },
     subtitle: {
-        fontSize: 14,
+        fontSize: moderateScale(12),
+        fontWeight: '400',
         color: '#666',
         textAlign: 'center',
         paddingBottom: 20,

@@ -8,14 +8,10 @@ import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
 import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
 import { navigateAndReset, pushTo } from '../navigation/NavigationService';
+import { moderateScale } from '../Utils/responsiveSize';
 
 // Helper function for translation
 const t = (key: keyof typeof TRANSLATION_KEYS) => i18n.translate(TRANSLATION_KEYS[key]);
-
-// Ensure this path is correct
-
-// Replace 'Login' with the actual screen name for this component as defined in your RootStackParamList
-// type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 function Login() {
 
@@ -28,7 +24,6 @@ function Login() {
 
             <ScrollView style={{ width: '100%' }} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
                 <SafeAreaView>
-
                     <SvgAuthLogo style={{ alignSelf: 'center', marginBottom: 32 }} />
                     <Text style={styles.title}>{i18n.t(TRANSLATION_KEYS.hello_again)}</Text>
                     <View style={{ paddingHorizontal: 50 }}>
@@ -49,7 +44,7 @@ function Login() {
                             // onPress={() => navigation.replace('MainTabs')}
                             onPress={() => navigateAndReset('MainTabs')}
                             style={{ marginTop: 20, backgroundColor: Colors.blue0A1C26 }}
-                            textStyle={{ fontSize: 18, fontWeight: '600' }}
+                            textStyle={{ fontSize: moderateScale(16), fontWeight: '700' }}
                         />
 
                     </View>
@@ -83,14 +78,15 @@ const styles = StyleSheet.create({
         minHeight: '100%',
     },
     title: {
-        fontSize: 24,
-        fontWeight: 'bold',
+        fontSize: moderateScale(24),
+        fontWeight: '400',
         paddingBottom: 40,
         textAlign: 'center',
         fontFamily: FONT_FAMILY_GOTHIC_A1,
     },
     subtitle: {
-        fontSize: 16,
+        fontSize: moderateScale(12),
+        fontWeight: '400',
         color: '#666',
         textDecorationLine: 'underline',
         fontFamily: FONT_FAMILY_GOTHIC_A1,
@@ -105,15 +101,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     registerText: {
-        fontSize: 16,
-        paddingBottom: 10,
+        fontSize: moderateScale(24),
+        fontWeight: '400',
+        fontFamily: FONT_FAMILY_GOTHIC_A1,
+        paddingBottom: 8,
         color: '#333',
     },
     registerLink: {
         color: Colors.blue0A1C26,
-        fontWeight: 'bold',
+        fontWeight: '700',
+        fontSize: moderateScale(14),
         textDecorationLine: 'underline',
-        marginBottom: 10,
+        marginBottom: 20,
     },
 });
 

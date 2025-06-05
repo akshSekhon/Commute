@@ -8,6 +8,7 @@ const Colors = {
   textSecondary: '#666',
   white: '#ffffff',
   blue0A1C26: '#0A1C26',
+  green16EB84: '#16EB84',
   // Add more colors as needed
 };
 

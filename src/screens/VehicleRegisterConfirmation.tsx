@@ -6,24 +6,28 @@ import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
 import CustomButton from '../components/CustomButton';
 import CorssIcon from '../assets/images/corss_icon.svg';
 import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
+import { goBack } from '../navigation/NavigationService';
+import { moderateScale } from 'react-native-size-matters';
 
 
 
 const VehicleRegisterConfirmation = ({
   vehicle = { brand: 'Audi Q5', color: 'Gris metalizado', plate: '1234ZYW', tag: 'ECO' },
-  onClose = () => {},
-  onConfirm = () => {},
+
 }) => {
   return (
     <LinearGradient colors={[Colors.gradientStart, Colors.gradientEnd]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <TouchableOpacity style={styles.closeIcon} onPress={onClose}>
+        <TouchableOpacity style={styles.closeIcon} onPress={() => {
+          // Handle close action, e.g., go back to the previous screen
+          goBack();
+        }}>
           <CorssIcon width={28} height={28} />
         </TouchableOpacity>
         <View style={styles.content}>
           <Text style={styles.title}>{i18n.t(TRANSLATION_KEYS.vehicle_register_confirm_question)}</Text>
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>{i18n.t(TRANSLATION_KEYS.add_vehicle_step1_title)}</Text>
+            <Text style={styles.cardTitle}>Nuevo vehículo</Text>
             <Text style={styles.cardText}>{vehicle.brand}</Text>
             <Text style={styles.cardText}>{vehicle.color}</Text>
             <Text style={styles.cardText}>{vehicle.plate}</Text>
@@ -31,7 +35,11 @@ const VehicleRegisterConfirmation = ({
           </View>
           <CustomButton
             title={i18n.t(TRANSLATION_KEYS.Confirm)}
-            onPress={onConfirm}
+            onPress={() => {
+              // Handle confirmation action, e.g., submit the vehicle registration
+              console.log('Vehicle registration confirmed');
+            }
+            }
             style={styles.confirmButton}
             textStyle={styles.confirmButtonText}
           />
@@ -58,6 +66,7 @@ const styles = StyleSheet.create({
   closeIcon: {
     alignSelf: 'flex-start',
     marginLeft: 16,
+    marginTop: 20,
   },
   content: {
     flex: 1,
@@ -65,14 +74,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 30,
-    paddingTop: 60,
+    // paddingTop: 60,
   },
   title: {
-    fontSize: 25,
+    fontSize: moderateScale(22),
     fontWeight: '700',
-    color: Colors.textPrimary,
+    color: Colors.blue0A1C26,
     textAlign: 'center',
-    marginBottom: 24,
+    marginBottom: moderateScale(40),
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
   card: {
@@ -81,48 +90,43 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 32,
     alignItems: 'center',
-    marginBottom: 24,
     width: '100%',
     maxWidth: 320,
   },
   cardTitle: {
-    color: Colors.textSecondary,
-    fontSize: 16,
+    color: Colors.white,
+    fontSize: moderateScale(20),
+    fontWeight: '400',
     marginBottom: 33,
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
   cardText: {
     color: '#fff',
-    fontSize: 20,
-    fontWeight: '600',
-    marginBottom: 33,
+    fontSize: moderateScale(26),
+    fontWeight: '700',
+    marginBottom: moderateScale(33),
     fontFamily: FONT_FAMILY_GOTHIC_A1,
     textAlign: 'center',
   },
   confirmButton: {
-    backgroundColor: '#4be37a',
-    borderRadius: 20,
-    paddingHorizontal: 32,
-    paddingVertical: 10,
-    marginBottom: 12,
+    backgroundColor: Colors.green16EB84,
+    borderRadius: 50,
     minWidth: 160,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 2,
+    marginTop: moderateScale(-25),
   },
   confirmButtonText: {
-    color: '#0A1C26',
+    color: Colors.blue0A1C26,
     fontWeight: '700',
-    fontSize: 18,
+    fontSize: moderateScale(22),
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
   infoText: {
     color: Colors.textSecondary,
-    fontSize: 12,
+    fontSize: moderateScale(12),
+    fontWeight: '700',
     textAlign: 'center',
-    marginTop: 8,
+    paddingHorizontal: 30,
+    marginTop: 40,
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
 });

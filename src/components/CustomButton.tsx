@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ActivityIndicator, ViewStyle, TextStyle } from 'react-native';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
+import { moderateScale } from 'react-native-size-matters';
 
 interface CustomButtonProps {
   title: string;
@@ -43,19 +44,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.10,
-    shadowRadius: 8,
-    elevation: 4,
+   
   },
   buttonDisabled: {
     backgroundColor: '#A0A0A0',
   },
   text: {
     color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: moderateScale(16),
+    fontWeight: '700',
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
 });

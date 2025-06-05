@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     },
     safeArea: {
         flex: 1,
+        marginTop: 20,
     },
     headerTitle: {
         color: Colors.white,

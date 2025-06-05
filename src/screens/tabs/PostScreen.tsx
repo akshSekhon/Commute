@@ -7,6 +7,7 @@ import { FONT_FAMILY_GOTHIC_A1 } from '../../constants/fonts';
 import CustomButton from '../../components/CustomButton';
 import PostIcon from '../../assets/images/tab/tab_post_selected.svg';
 import { useNavigation } from '@react-navigation/native';
+import { moderateScale } from 'react-native-size-matters';
 
 const PostScreen:React.FC<{ navigation: any,route:any }> = ({ navigation,route }) => {
   
@@ -18,7 +19,7 @@ const PostScreen:React.FC<{ navigation: any,route:any }> = ({ navigation,route }
     >
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.content}>
-          <PostIcon width={120} height={120} style={styles.icon} />
+          <PostIcon width={moderateScale(150)} height={moderateScale(150)} style={styles.icon} />
           <Text style={styles.title}>{i18n.t(TRANSLATION_KEYS.post_not_driver)}</Text>
           <Text style={styles.description}>{i18n.t(TRANSLATION_KEYS.post_driver_instruction)}</Text>
           <CustomButton
@@ -27,8 +28,9 @@ const PostScreen:React.FC<{ navigation: any,route:any }> = ({ navigation,route }
               navigation.navigate('AddVehicleScreen');
             }}
             style={styles.button}
+            textStyle={{ fontSize: moderateScale(20), fontWeight: '700' }}
           />
-             <Text style={styles.description}>{i18n.t(TRANSLATION_KEYS.steps_message)}</Text>
+             <Text style={styles.steps}>{i18n.t(TRANSLATION_KEYS.steps_message)}</Text>
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -52,16 +54,17 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   title: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: Colors.textPrimary,
+    fontSize: moderateScale(24),
+    fontWeight: '700',
+    color: Colors.blue0A1C26,
     marginBottom: 40,
     textAlign: 'center',
     fontFamily: FONT_FAMILY_GOTHIC_A1,
   },
   description: {
-    fontSize: 16,
-    color: Colors.textSecondary,
+    fontSize: moderateScale(20),
+    fontWeight: '400',
+    color: Colors.blue0A1C26,
     textAlign: 'center',
     marginBottom: 32,
     fontFamily: FONT_FAMILY_GOTHIC_A1,
@@ -71,6 +74,11 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.blue0A1C26,
     marginBottom: 50,
+  },
+  steps: {
+    fontSize: moderateScale(14),
+    fontWeight: '400',
+    color: Colors.blue0A1C26,
   },
 });
 

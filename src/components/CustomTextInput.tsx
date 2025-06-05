@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput, View, Text, StyleSheet, TextInputProps } from 'react-native';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
+import { moderateScale } from 'react-native-size-matters';
 
 interface CustomTextInputProps extends TextInputProps {
   label?: string;
@@ -37,10 +38,11 @@ const styles = StyleSheet.create({
     height: 48,
     borderColor: '#fff',
     borderWidth: 1,
-    borderRadius: 12,
+    borderRadius: moderateScale(10),
     paddingHorizontal: 16,
     backgroundColor: '#fff',
-    fontSize: 18,
+    fontSize: moderateScale(16),
+    fontWeight: '400',
     fontFamily: FONT_FAMILY_GOTHIC_A1,
     // Bottom shadow only
     shadowColor: '#000',

@@ -13,7 +13,7 @@ import VerifyIcon from '../../assets/images/profiles/option_verify.svg';
 import OpinionIcon from '../../assets/images/profiles/option_opinion.svg';
 import PaymentsIcon from '../../assets/images/profiles/option_payment_management.svg';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/StackNavigator';
+import { moderateScale } from 'react-native-size-matters';
 
 
 
@@ -85,29 +85,30 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   name: {
-    fontSize: 24,
-    fontWeight: '500',
-    marginBottom: 8,
+    fontSize: moderateScale(24),
+    fontWeight: '400',
+    marginBottom: moderateScale(14),
+    color: Colors.blue0A1C26,
   },
   avatarWrapper: {
     borderWidth: 3,
-    borderColor: '#4be37a',
-    borderRadius: 60,
-    padding: 3,
-    marginBottom: 8,
+    borderColor: Colors.green16EB84,
+    borderRadius: moderateScale(55),
+    marginBottom: moderateScale(8),
+    
   },
   avatar: {
-    width: 90,
-    height: 90,
-    borderRadius: 45,
+    width: moderateScale(90),
+    height: moderateScale(90),
+    borderRadius: moderateScale(45),
   },
   joinDate: {
     color: Colors.textSecondary,
-    fontSize: 15,
-    marginTop: 4,
+    fontSize: moderateScale(16),
+    fontWeight: '400',
+    fontFamily: 'GothicA1',
   },
   menu: {
-    // backgroundColor: '#e6ecf0',
     borderRadius: 4,
     marginHorizontal: 0,
     marginBottom: 8,
@@ -128,17 +129,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
   },
   menuLabel: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontWeight: '700',
     fontFamily: 'GothicA1',
-    color: Colors.textPrimary,
+    color: Colors.blue0A1C26,
   },
   link: {
     paddingHorizontal: 18,
     paddingVertical: 10,
   },
   linkText: {
-    fontSize: 18,
+    fontSize: moderateScale(18),
     fontWeight: '400',
     color: Colors.textPrimary,
     textDecorationLine: 'underline',
