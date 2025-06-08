@@ -9,8 +9,6 @@ import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
 import { goBack } from '../navigation/NavigationService';
 import { moderateScale } from 'react-native-size-matters';
 
-
-
 const VehicleRegisterConfirmation = ({
   vehicle = { brand: 'Audi Q5', color: 'Gris metalizado', plate: '1234ZYW', tag: 'ECO' },
 

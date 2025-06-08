@@ -7,7 +7,7 @@ import CustomButton from '../components/CustomButton';
 import CustomTextInput from '../components/CustomTextInput';
 import { Colors } from '../constants/common';
 import { FONT_FAMILY_GOTHIC_A1 } from '../constants/fonts';
-import i18n from '../constants/localization/localization';
+import i18n, { TRANSLATION_KEYS } from '../constants/localization/localization';
 import { goBack, pushTo } from '../navigation/NavigationService';
 import { moderateScale } from 'react-native-size-matters';
 
@@ -27,19 +27,19 @@ function Signup() {
             <ScrollView style={{ width: '100%' }} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
                 <SafeAreaView>
                     <SvgAuthLogo style={{ alignSelf: 'center', marginBottom: 32 }} />
-                    <Text style={styles.title}>{i18n.t('welcome')}</Text>
+                    <Text style={styles.title}>{i18n.t(TRANSLATION_KEYS.welcome)}</Text>
                     <View style={{ paddingTop: 20 }} />
-                    <Text style={styles.subtitle}>{i18n.t('enter_email')}</Text>
+                    <Text style={styles.subtitle}>{i18n.t(TRANSLATION_KEYS.enter_email)}</Text>
                     <View style={{ paddingTop: 10 }} />
                     <View style={{ paddingHorizontal: 50 }}>
                         <CustomTextInput
-                            placeholder={i18n.t('email')}
+                            placeholder={i18n.t(TRANSLATION_KEYS.email)}
                             keyboardType="email-address"
                             autoCapitalize="none"
                         />
 
                         <CustomButton
-                            title={i18n.t('next')}
+                            title={i18n.t(TRANSLATION_KEYS.next)}
                             onPress={() => {
                                 console.log('Next pressed');
                                 pushTo('OtpVerification')
@@ -50,7 +50,7 @@ function Signup() {
                         />
 
                         <CustomButton
-                            title={i18n.t('register_with_phone')}
+                            title={i18n.t(TRANSLATION_KEYS.register_with_phone)}
                             onPress={() => console.log('Login pressed')}
                             style={{ borderColor: Colors.blue0A1C26, backgroundColor: 'transparent', borderWidth: 1 }}
                             textStyle={{ fontSize: moderateScale(16), fontWeight: '700', color: Colors.blue0A1C26 }}

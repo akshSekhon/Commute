@@ -7,7 +7,11 @@ export type AuthRouteParamList = {
     CreatePassword: undefined;
     CreateUsername: undefined;
     AddVehicleScreen: undefined;
-    VehicleRegisterConfirmation: undefined; // Assuming this is a screen you might have
+    VehicleRegisterConfirmation: undefined;
+    PersonalInformation:undefined; 
+    VerificationScreen:undefined;
+    VerifyEmailTelephone: undefined;
+    VerifyOtpEmailTelephone: undefined;
 }
 
 
